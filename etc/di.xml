@@ -1,0 +1,48 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Toogas\AbTesting\Api\AbTestRepositoryInterface"
+                type="Toogas\AbTesting\Model\AbTestRepository"
+    />
+	<preference for="Toogas\AbTesting\Api\Data\AbTestInterface"
+                type="Toogas\AbTesting\Model\AbTest"
+    />
+	<preference for="Toogas\AbTesting\Api\Data\AbTestSearchResultsInterface"
+                type="Magento\Framework\Api\SearchResults"
+    />
+	<virtualType name="Toogas\AbTesting\Model\ResourceModel\AbTest\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">toogas_abtesting_abtest</argument>
+			<argument name="resourceModel" xsi:type="string">Toogas\AbTesting\Model\ResourceModel\AbTest\Collection</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="toogas_abtesting_abtest_listing_data_source" xsi:type="string">Toogas\AbTesting\Model\ResourceModel\AbTest\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+
+    <preference for="Toogas\AbTesting\Api\StatisticRepositoryInterface"
+                type="Toogas\AbTesting\Model\StatisticRepository"
+    />
+    <preference for="Toogas\AbTesting\Api\Data\StatisticInterface"
+                type="Toogas\AbTesting\Model\Statistic"
+    />
+    <preference for="Toogas\AbTesting\Api\Data\StatisticSearchResultsInterface"
+                type="Magento\Framework\Api\SearchResults"
+    />
+    <virtualType name="Toogas\AbTesting\Model\ResourceModel\Statistic\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">toogas_abtesting_abtest</argument>
+            <argument name="resourceModel" xsi:type="string">Toogas\AbTesting\Model\ResourceModel\AbTest\Collection</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="toogas_abtesting_statistic_listing_data_source" xsi:type="string">Toogas\AbTesting\Model\ResourceModel\AbTest\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

@@ -1,0 +1,37 @@
+{
+    "toogas_abtesting_abtest": {
+        "column": {
+            "entity_id": true,
+            "active": true,
+            "title": true,
+            "block_1": true,
+            "block_2": true,
+            "created_at": true,
+            "block_1_render_count": true,
+            "block_2_render_count": true,
+            "start_date": true,
+            "end_date": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "toogas_abtesting_statistic": {
+        "column": {
+            "entity_id": true,
+            "session_id": true,
+            "email": true,
+            "test_id": true,
+            "content": true,
+            "action": true,
+            "sale_value": true,
+            "created_at": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        },
+        "index": {
+            "TOOGAS_ABTESTING_STATISTIC_TEST_ID_CONTENT_ACTION": true
+        }
+    }
+}

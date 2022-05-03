@@ -1,0 +1,18 @@
+<?php
+use Toogas\AbTesting\Block\Widget\AbTest;
+
+/**
+ * @var $block AbTest
+ */
+?>
+<?php if ($block->getData('entity_id')): ?>
+    <div id="ab-test-<?= /* @noEscape */ $block->getData('entity_id') ?>"
+        data-mage-init='{
+            "abtest": {
+                "id": "<?= /* @noEscape */ $block->getData('entity_id') ?>",
+                "url": "<?= /* @noEscape */ $block->getUrl('abtest/frontend/content') ?>",
+                "statsUrl": "<?= /* @noEscape */ $block->getUrl('abtest/frontend/statistics') ?>"
+            }
+        }'
+    ></div>
+<?php endif; ?>

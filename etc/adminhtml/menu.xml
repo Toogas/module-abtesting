@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+        <add id="Toogas_AbTesting::management"
+             title="Toogas A/B Testing"
+             module="Toogas_AbTesting"
+             sortOrder="99"
+             parent="Magento_Backend::marketing"
+             dependsOnModule="Magento_Backend"
+             resource="Toogas_AbTesting::management"/>
+		<add id="Toogas_AbTesting::toogas_abtesting_abtest"
+             title="A/B Tests"
+             module="Toogas_AbTesting"
+             sortOrder="9999"
+             resource="Toogas_AbTesting::AbTest"
+             parent="Toogas_AbTesting::management"
+             action="toogas_abtesting/abtest/index"
+        />
+        <add id="Toogas_AbTesting::toogas_abtesting_statistic"
+             title="Statistics"
+             module="Toogas_AbTesting"
+             sortOrder="9999"
+             resource="Toogas_AbTesting::Statistic"
+             parent="Toogas_AbTesting::management"
+             action="toogas_abtesting/statistic/index"
+        />
+	</menu>
+</config>

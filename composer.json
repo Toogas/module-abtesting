@@ -1,0 +1,31 @@
+{
+    "name": "toogas/module-abtesting",
+    "description": "Module to create and measure A/B tests based on Page Builder CMS blocks",
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Toogas",
+            "email": "info@toogas.com",
+            "homepage": "https://www.toogas.com",
+            "role": "Technical Support"
+        }
+    ],
+    "minimum-stability": "dev",
+    "keywords": [
+        "magento 2",
+        "magento 2 marketing",
+        "magento 2 ab test",
+        "ab test",
+        "a/b tests"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Toogas\\AbTesting\\": ""
+        }
+    }
+}

@@ -1,0 +1,479 @@
+<?php
+/**
+ * @var $block Toogas\AbTesting\Block\Adminhtml\Statistic\View
+ */
+?>
+<div class="fieldset-wrapper" data-level="0" data-index="percent">
+    <div class="fieldset-wrapper-title" tabindex="-1">
+        <strong class="title">
+            <span><?= /* @noEscape */ __('Percentage of Clicks, Views and Renders') ?> %</span>
+        </strong>
+    </div>
+    <div class="admin__fieldset-wrapper-content">
+        <div class="admin__fieldset">
+            <div class="top-chart-container">
+                <div class="chart-container">
+                    <h3><?=  /* @noEscape */ __('Clicks') ?></h3>
+                    <canvas id="click_percentage"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3><?=  /* @noEscape */ __('Unique Views (per visitor)') ?></h3>
+                    <canvas id="unique_percentage"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3><?=  /* @noEscape */ __('Views') ?></h3>
+                    <canvas id="view_percentage"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3><?=  /* @noEscape */ __('Renders') ?></h3>
+                    <canvas id="render_percentage"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="fieldset-wrapper" data-level="0" data-index="views">
+    <div class="fieldset-wrapper-title" tabindex="-1">
+        <strong class="title">
+            <span><?= /* @noEscape */ __('Total number of Clicks, Views and Renders') ?></span>
+        </strong>
+    </div>
+    <div class="admin__fieldset-wrapper-content">
+        <div class="admin__fieldset">
+            <div class="chart-container">
+                <canvas id="test_views"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="fieldset-wrapper" data-level="0" data-index="conversion">
+    <div class="fieldset-wrapper-title" tabindex="-1">
+        <strong class="title">
+            <span><?= /* @noEscape */ __('Conversion Rate') ?> %</span>
+        </strong>
+    </div>
+    <div class="admin__fieldset-wrapper-content">
+        <div class="admin__fieldset">
+            <div class="chart-container">
+                <canvas id="conversion"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="fieldset-wrapper" data-level="0" data-index="average">
+    <div class="fieldset-wrapper-title" tabindex="-1">
+        <strong class="title">
+            <span><?= /* @noEscape */ __('Average Sale Value') ?></span>
+        </strong>
+    </div>
+    <div class="admin__fieldset-wrapper-content">
+        <div class="admin__fieldset">
+            <div class="chart-container">
+                <canvas id="average"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="fieldset-wrapper" data-level="0" data-index="viewsDaily">
+    <div class="fieldset-wrapper-title" tabindex="-1">
+        <strong class="title">
+            <span><?= /* @noEscape */ __('Views per day') ?></span>
+        </strong>
+    </div>
+    <div class="admin__fieldset-wrapper-content">
+        <div class="admin__fieldset">
+            <div class="chart-container">
+                <canvas id="test_daily"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    const labels = [
+        "<?= /* @noEscape */ __('Content A') ?>",
+        "<?= /* @noEscape */ __('Content B') ?>",
+    ];
+
+    const dataViews = {
+        labels: labels,
+        datasets: [
+            {
+                label: "<?= /* @noEscape */ __('Clicks') ?>",
+                data: [
+                    <?= /* @noEscape */ $block->getContentAClicks() ?>,
+                    <?= /* @noEscape */ $block->getContentBClicks() ?>
+                ],
+                backgroundColor: [
+                    'rgb(96,255,230)',
+                    'rgb(96,255,230)'
+                ],
+                borderColor: [
+                    'rgb(97,107,250)',
+                    'rgb(97,107,250)'
+                ],
+                borderWidth: 1
+            },
+            {
+                label: "<?= /* @noEscape */ __('Unique Views (per visitor)') ?>",
+                data: [
+                    <?= /* @noEscape */ $block->getContentAUniqueViews() ?>,
+                    <?= /* @noEscape */ $block->getContentBUniqueViews() ?>
+                ],
+                backgroundColor: [
+                    'rgb(54, 162, 235)',
+                    'rgb(54, 162, 235)'
+                ],
+                borderColor: [
+                    'rgb(0,13,252)',
+                    'rgb(0,13,252)'
+                ],
+                borderWidth: 1
+            },
+            {
+                label: "<?= /* @noEscape */ __('Views') ?>",
+                data: [
+                    <?= /* @noEscape */ $block->getContentAViews() ?>,
+                    <?= /* @noEscape */ $block->getContentBViews() ?>
+                ],
+                backgroundColor: [
+                    'rgb(135,54,235)',
+                    'rgb(135,54,235)'
+                ],
+                borderColor: [
+                    'rgb(122,0,252)',
+                    'rgb(122,0,252)'
+                ],
+                borderWidth: 1
+            },
+            {
+                label: "<?= /* @noEscape */ __('Render Count') ?>",
+                data: [
+                    <?= /* @noEscape */ $block->getContentARenderCount() ?>,
+                    <?= /* @noEscape */ $block->getContentBRenderCount() ?>
+                ],
+                backgroundColor: [
+                    'rgba(99,255,190,0.2)',
+                    'rgba(99,255,190,0.2)',
+                ],
+                borderColor: [
+                    'rgb(0,255,19)',
+                    'rgb(0,255,19)',
+                ],
+                borderWidth: 1
+            }
+        ]
+    };
+
+    const configViews = {
+        type: 'bar',
+        data: dataViews,
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            },
+            indexAxis: 'y',
+        }
+    };
+
+    const dataConversion = {
+        labels: labels,
+        datasets: [
+            {
+                label: "<?= /* @noEscape */ __('Conversion Rate') ?> %",
+                data: [
+                    <?= /* @noEscape */ $block->getConversionRateA() ?>,
+                    <?= /* @noEscape */ $block->getConversionRateB() ?>
+                ],
+                backgroundColor: [
+                    'rgb(54, 162, 235)',
+                    'rgb(255, 99, 132)'
+                ],
+                borderColor: [
+                    'rgb(0,13,252)',
+                    'rgb(255,0,0)'
+                ],
+                borderWidth: 1
+            }
+        ]
+    };
+
+    const configConversion = {
+        type: 'bar',
+        data: dataConversion,
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            },
+            plugins: {
+                legend: false,
+            },
+        }
+    };
+
+    const dataAverage = {
+        labels: labels,
+        datasets: [
+            {
+                label: "<?= /* @noEscape */ __('Average Sale Value') ?>",
+                data: [
+                    <?= /* @noEscape */ $block->getAverageSaleA() ?>,
+                    <?= /* @noEscape */ $block->getAverageSaleB() ?>
+                ],
+                backgroundColor: [
+                    'rgb(54, 162, 235)',
+                    'rgb(255, 99, 132)'
+                ],
+                borderColor: [
+                    'rgb(0,13,252)',
+                    'rgb(255,0,0)'
+                ],
+                borderWidth: 1
+            }
+        ]
+    };
+
+    const configAverage = {
+        type: 'bar',
+        data: dataAverage,
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            },
+            plugins: {
+                legend: false,
+            },
+        }
+    };
+
+    const dataDaily = {
+        labels: [<?= /* @noEscape */ $block->getDailyLabels() ?>],
+        datasets: [
+            {
+                label: "<?= /* @noEscape */ __('Content A per day') ?>",
+                data: [<?= /* @noEscape */ implode(',', $block->getContentADaily()) ?>],
+                fill: false,
+                borderColor: 'rgb(54, 162, 235)',
+                tension: 0.1
+            },
+            {
+                label: "<?= /* @noEscape */ __('Content B per day') ?>",
+                data: [<?= /* @noEscape */ implode(',', $block->getContentBDaily()) ?>],
+                fill: false,
+                borderColor: 'rgb(255, 99, 132)',
+                tension: 0.1
+            }
+        ]
+    };
+
+    const configDaily = {
+        type: 'line',
+        data: dataDaily,
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'top',
+                }
+            }
+        },
+    };
+
+    const pieLabels = [
+        "<?= /* @noEscape */ __('Content B') ?>",
+        "<?= /* @noEscape */ __('Content A') ?>",
+    ];
+
+    const dataClickPercent = {
+        labels: pieLabels,
+        datasets: [
+            {
+                label: "<?= /* @noEscape */ __('Click Percentage') ?> %",
+                data: [
+                    <?= /* @noEscape */ $block->getClickBPercentage() ?>,
+                    <?= /* @noEscape */ $block->getClickAPercentage() ?>,
+                ],
+                backgroundColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(54, 162, 235)'
+                ],
+                borderColor: [
+                    'rgb(255,0,0)',
+                    'rgb(0,13,252)'
+                ],
+                borderWidth: 1
+            }
+        ]
+    };
+
+    const configClickPercent = {
+        type: 'doughnut',
+        data: dataClickPercent,
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: false,
+            }
+        }
+    };
+
+    const dataUniquePercent = {
+        labels: pieLabels,
+        datasets: [
+            {
+                label: "<?= /* @noEscape */ __('Unique View Percentage') ?> %",
+                data: [
+                    <?= /* @noEscape */ $block->getUniqueBPercentage() ?>,
+                    <?= /* @noEscape */ $block->getUniqueAPercentage() ?>,
+                ],
+                backgroundColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(54, 162, 235)'
+                ],
+                borderColor: [
+                    'rgb(255,0,0)',
+                    'rgb(0,13,252)'
+                ],
+                borderWidth: 1
+            }
+        ]
+    };
+
+    const configUniquePercent = {
+        type: 'doughnut',
+        data: dataUniquePercent,
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: false,
+            }
+        }
+    };
+
+    const dataViewPercent = {
+        labels: pieLabels,
+        datasets: [
+            {
+                label: "<?= /* @noEscape */ __('View Percentage') ?> %",
+                data: [
+                    <?= /* @noEscape */ $block->getViewBPercentage() ?>,
+                    <?= /* @noEscape */ $block->getViewAPercentage() ?>,
+                ],
+                backgroundColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(54, 162, 235)'
+                ],
+                borderColor: [
+                    'rgb(255,0,0)',
+                    'rgb(0,13,252)'
+                ],
+                borderWidth: 1
+            }
+        ]
+    };
+
+    const configViewPercent = {
+        type: 'doughnut',
+        data: dataViewPercent,
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: false,
+            }
+        }
+    };
+
+    const dataRenderPercent = {
+        labels: pieLabels,
+        datasets: [
+            {
+                label: "<?= /* @noEscape */ __('Render Percentage') ?> %",
+                data: [
+                    <?= /* @noEscape */ $block->getRenderBPercentage() ?>,
+                    <?= /* @noEscape */ $block->getRenderAPercentage() ?>
+                ],
+                backgroundColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(54, 162, 235)'
+                ],
+                borderColor: [
+                    'rgb(255,0,0)',
+                    'rgb(0,13,252)'
+                ],
+                borderWidth: 1
+            }
+        ]
+    };
+
+    const configRenderPercent = {
+        type: 'doughnut',
+        data: dataRenderPercent,
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: false,
+            }
+        }
+    };
+
+    require([
+        'jquery',
+        'Chart',
+        'domReady!'
+    ], function ($, Chart) {
+        const testViews = new Chart(
+            document.getElementById('test_views'),
+            configViews
+        );
+        const conversion = new Chart(
+            document.getElementById('conversion'),
+            configConversion
+        );
+        const average = new Chart(
+            document.getElementById('average'),
+            configAverage
+        );
+        const testDaily = new Chart(
+            document.getElementById('test_daily'),
+            configDaily
+        );
+        const clickPercent = new Chart(
+            document.getElementById('click_percentage'),
+            configClickPercent
+        );
+        const uniquePercent = new Chart(
+            document.getElementById('unique_percentage'),
+            configUniquePercent
+        );
+        const viewPercent = new Chart(
+            document.getElementById('view_percentage'),
+            configViewPercent
+        );
+        const renderPercent = new Chart(
+            document.getElementById('render_percentage'),
+            configRenderPercent
+        );
+    });
+</script>

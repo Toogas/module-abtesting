@@ -1,0 +1,37 @@
+<?xml version="1.0" ?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+	<table name="toogas_abtesting_abtest" resource="default" engine="innodb" comment="toogas_abtesting_abtest Table">
+		<column xsi:type="int" name="entity_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+		<constraint xsi:type="primary" referenceId="PRIMARY">
+			<column name="entity_id"/>
+		</constraint>
+		<column name="active" nullable="false" xsi:type="boolean" default="false" comment="Test active state"/>
+		<column name="title" nullable="false" xsi:type="varchar" length="255" comment="Test Title"/>
+		<column name="block_1" nullable="true" xsi:type="text" comment="Content A"/>
+		<column name="block_2" nullable="true" xsi:type="text" comment="Content B"/>
+		<column name="created_at" xsi:type="timestamp" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Creation Time"/>
+		<column name="block_1_render_count" nullable="false" xsi:type="int" default="0" padding="10" comment="Count renders of content A"/>
+		<column name="block_2_render_count" nullable="false" xsi:type="int" default="0" padding="10" comment="Count renders of content B"/>
+        <column xsi:type="datetime" nullable="true" name="start_date" comment="Start Date"/>
+        <column xsi:type="datetime" nullable="true" name="end_date" comment="End Date"/>
+	</table>
+
+    <table name="toogas_abtesting_statistic" resource="default" engine="innodb" comment="toogas_abtesting_statistic Table">
+        <column xsi:type="int" name="entity_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <column name="session_id" nullable="true" xsi:type="text" comment="Session Id"/>
+        <column name="email" nullable="true" xsi:type="varchar" length="255" comment="Customer Email"/>
+        <column name="test_id" nullable="true" xsi:type="int" padding="10" comment="Test Id"/>
+        <column name="content" nullable="true" xsi:type="smallint" comment="content A or B"/>
+        <column name="action" nullable="true" xsi:type="varchar" length="50" comment="Action type"/>
+        <column name="sale_value" xsi:type="decimal" scale="4" precision="20" nullable="true" comment="Checkout action total"/>
+        <column name="created_at" xsi:type="timestamp" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Creation Time"/>
+        <index referenceId="IDX_TOOGAS_STATISIC_TEST_CONTENT_ACTION" indexType="btree">
+            <column name="test_id"/>
+            <column name="content"/>
+            <column name="action"/>
+        </index>
+    </table>
+</schema>

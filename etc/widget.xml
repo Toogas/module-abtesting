@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+	<widget id="toogas_abtesting_abtest" class="Toogas\AbTesting\Block\Widget\AbTest">
+		<label>A/B Test</label>
+		<description>A/B Test</description>
+		<parameters>
+			<parameter name="entity_id" xsi:type="select" visible="true" sort_order="10" source_model="Toogas\AbTesting\Model\Config\Source\AbTest">
+				<label>A/B Test</label>
+			</parameter>
+		</parameters>
+	</widget>
+</widgets>

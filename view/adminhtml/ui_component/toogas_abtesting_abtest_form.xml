@@ -1,0 +1,179 @@
+<?xml version="1.0" ?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<argument name="data" xsi:type="array">
+		<item name="js_config" xsi:type="array">
+			<item name="provider" xsi:type="string">toogas_abtesting_abtest_form.abtest_form_data_source</item>
+		</item>
+		<item name="label" xsi:type="string" translate="true">General Information</item>
+		<item name="template" xsi:type="string">templates/form/collapsible</item>
+	</argument>
+	<settings>
+		<buttons>
+			<button name="back" class="Toogas\AbTesting\Block\Adminhtml\AbTest\Edit\BackButton"/>
+			<button name="delete" class="Toogas\AbTesting\Block\Adminhtml\AbTest\Edit\DeleteButton"/>
+			<button name="save" class="Toogas\AbTesting\Block\Adminhtml\AbTest\Edit\SaveButton"/>
+			<button name="save_and_continue" class="Toogas\AbTesting\Block\Adminhtml\AbTest\Edit\SaveAndContinueButton"/>
+		</buttons>
+		<namespace>toogas_abtesting_abtest_form</namespace>
+		<dataScope>data</dataScope>
+		<deps>
+			<dep>toogas_abtesting_abtest_form.abtest_form_data_source</dep>
+		</deps>
+	</settings>
+	<dataSource name="abtest_form_data_source">
+		<argument name="data" xsi:type="array">
+			<item name="js_config" xsi:type="array">
+				<item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+			</item>
+		</argument>
+		<settings>
+			<submitUrl path="*/*/save"/>
+		</settings>
+		<dataProvider name="abtest_form_data_source" class="Toogas\AbTesting\Model\AbTest\DataProvider">
+			<settings>
+				<requestFieldName>entity_id</requestFieldName>
+				<primaryFieldName>entity_id</primaryFieldName>
+			</settings>
+		</dataProvider>
+	</dataSource>
+	<fieldset name="general">
+		<settings>
+			<label>General</label>
+		</settings>
+        <field name="active" sortOrder="5" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">AbTest</item>
+                    <item name="default" xsi:type="number">1</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">false</rule>
+                </validation>
+                <dataType>boolean</dataType>
+                <label translate="true">Enable Test</label>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="string">0</map>
+                            <map name="true" xsi:type="string">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+        <field name="title" formElement="input" sortOrder="10">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">AbTest</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Title</label>
+                <dataScope>title</dataScope>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="start_date" formElement="date" sortOrder="20">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">AbTest</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Start Date</label>
+                <notice translate="true">
+                    Optional. If set, the content will only be shown from this date forward.
+                </notice>
+                <dataScope>start_date</dataScope>
+            </settings>
+            <formElements>
+                <date>
+                    <settings>
+                        <options>
+                            <option name="showsTime" xsi:type="boolean">true</option>
+                        </options>
+                    </settings>
+                </date>
+            </formElements>
+        </field>
+        <field name="end_date" formElement="date" sortOrder="30">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">AbTest</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">End Date</label>
+                <notice translate="true">
+                    Optional. If set, the content will only be shown until this date.
+                </notice>
+                <dataScope>end_date</dataScope>
+            </settings>
+            <formElements>
+                <date>
+                    <settings>
+                        <options>
+                            <option name="showsTime" xsi:type="boolean">true</option>
+                        </options>
+                    </settings>
+                </date>
+            </formElements>
+        </field>
+		<field name="block_1">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">AbTest</item>
+                    <item name="required" xsi:type="boolean">true</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                    <item name="class" xsi:type="string">Magento\Catalog\Ui\Component\Category\Form\Element\Wysiwyg</item>
+                    <item name="formElement" xsi:type="string">wysiwyg</item>
+                    <item name="label" translate="true" xsi:type="string">Content A</item>
+                    <item name="wysiwygConfigData" xsi:type="array">
+                        <item name="is_pagebuilder_enabled" xsi:type="boolean">true</item>
+                        <item name="pagebuilder_button" xsi:type="boolean">true</item>
+                    </item>
+                    <item name="template" xsi:type="string">ui/form/field</item>
+                    <item name="wysiwyg" xsi:type="boolean">true</item>
+                    <item name="dataScope" xsi:type="string">block_1</item>
+                    <item name="sortOrder" xsi:type="number">40</item>
+                    <item name="rows" xsi:type="number">8</item>
+                </item>
+            </argument>
+		</field>
+		<field name="block_2">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">AbTest</item>
+                    <item name="required" xsi:type="boolean">true</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                    <item name="class" xsi:type="string">Magento\Catalog\Ui\Component\Category\Form\Element\Wysiwyg</item>
+                    <item name="formElement" xsi:type="string">wysiwyg</item>
+                    <item name="label" translate="true" xsi:type="string">Content B</item>
+                    <item name="wysiwygConfigData" xsi:type="array">
+                        <item name="is_pagebuilder_enabled" xsi:type="boolean">true</item>
+                        <item name="pagebuilder_button" xsi:type="boolean">true</item>
+                    </item>
+                    <item name="template" xsi:type="string">ui/form/field</item>
+                    <item name="wysiwyg" xsi:type="boolean">true</item>
+                    <item name="dataScope" xsi:type="string">block_2</item>
+                    <item name="sortOrder" xsi:type="number">50</item>
+                    <item name="rows" xsi:type="number">8</item>
+				</item>
+			</argument>
+		</field>
+	</fieldset>
+</form>

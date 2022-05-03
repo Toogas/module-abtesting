@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+	<acl>
+		<resources>
+			<resource id="Magento_Backend::admin">
+				<resource id="Toogas_AbTesting::AbTest" title="AbTest" sortOrder="10">
+					<resource id="Toogas_AbTesting::AbTest_save" title="Save AbTest" sortOrder="10"/>
+					<resource id="Toogas_AbTesting::AbTest_delete" title="Delete AbTest" sortOrder="20"/>
+					<resource id="Toogas_AbTesting::AbTest_update" title="Update AbTest" sortOrder="30"/>
+					<resource id="Toogas_AbTesting::AbTest_view" title="View AbTest" sortOrder="40"/>
+				</resource>
+                <resource id="Toogas_AbTesting::Statistic" title="Statistic" sortOrder="10">
+                    <resource id="Toogas_AbTesting::Statistic_save" title="Save Statistic" sortOrder="10"/>
+                    <resource id="Toogas_AbTesting::Statistic_delete" title="Delete Statistic" sortOrder="20"/>
+                    <resource id="Toogas_AbTesting::Statistic_update" title="Update Statistic" sortOrder="30"/>
+                    <resource id="Toogas_AbTesting::Statistic_view" title="View Statistic" sortOrder="40"/>
+                </resource>
+			</resource>
+		</resources>
+	</acl>
+</config>
