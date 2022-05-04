@@ -43,7 +43,7 @@ interface AbTestInterface
     /**
      * Set entity_id
      * @param string $entityId
-     * @return \Toogas\AbTesting\AbTest\Api\Data\AbTestInterface
+     * @return AbTestInterface
      */
     public function setEntityId($entityId);
 
@@ -56,7 +56,7 @@ interface AbTestInterface
     /**
      * Set active
      * @param bool $active
-     * @return \Toogas\AbTesting\AbTest\Api\Data\AbTestInterface
+     * @return AbTestInterface
      */
     public function setActive($active);
 
@@ -69,7 +69,7 @@ interface AbTestInterface
     /**
      * Set title
      * @param string $title
-     * @return \Toogas\AbTesting\AbTest\Api\Data\AbTestInterface
+     * @return AbTestInterface
      */
     public function setTitle($title);
 
@@ -82,7 +82,7 @@ interface AbTestInterface
     /**
      * Set block_1
      * @param string $block1
-     * @return \Toogas\AbTesting\AbTest\Api\Data\AbTestInterface
+     * @return AbTestInterface
      */
     public function setBlock1($block1);
 
@@ -95,7 +95,7 @@ interface AbTestInterface
     /**
      * Set block_2
      * @param string $block2
-     * @return \Toogas\AbTesting\AbTest\Api\Data\AbTestInterface
+     * @return AbTestInterface
      */
     public function setBlock2($block2);
 
@@ -108,7 +108,7 @@ interface AbTestInterface
     /**
      * Set block_1_render_count
      * @param string $count
-     * @return \Toogas\AbTesting\AbTest\Api\Data\AbTestInterface
+     * @return AbTestInterface
      */
     public function setBlock1RenderCount($count);
 
@@ -121,7 +121,7 @@ interface AbTestInterface
     /**
      * Set block_2_render_count
      * @param string $count
-     * @return \Toogas\AbTesting\AbTest\Api\Data\AbTestInterface
+     * @return AbTestInterface
      */
     public function setBlock2RenderCount($count);
 
@@ -134,7 +134,7 @@ interface AbTestInterface
     /**
      * Set start_date
      * @param string $date
-     * @return \Toogas\AbTesting\AbTest\Api\Data\AbTestInterface
+     * @return AbTestInterface
      */
     public function setStartDate($date);
 
@@ -147,7 +147,7 @@ interface AbTestInterface
     /**
      * Set end_date
      * @param string $date
-     * @return \Toogas\AbTesting\AbTest\Api\Data\AbTestInterface
+     * @return AbTestInterface
      */
     public function setEndDate($date);
 }

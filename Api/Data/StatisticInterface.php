@@ -41,7 +41,7 @@ interface StatisticInterface
     /**
      * Set entity_id
      * @param string $entityId
-     * @return \Toogas\AbTesting\Statistic\Api\Data\StatisticInterface
+     * @return StatisticInterface
      */
     public function setEntityId($entityId);
 
@@ -54,7 +54,7 @@ interface StatisticInterface
     /**
      * Set session_id
      * @param string $sessionId
-     * @return \Toogas\AbTesting\Statistic\Api\Data\StatisticInterface
+     * @return StatisticInterface
      */
     public function setSessionId($sessionId);
 
@@ -67,7 +67,7 @@ interface StatisticInterface
     /**
      * Set email
      * @param string $email
-     * @return \Toogas\AbTesting\Statistic\Api\Data\StatisticInterface
+     * @return StatisticInterface
      */
     public function setEmail($email);
 
@@ -80,7 +80,7 @@ interface StatisticInterface
     /**
      * Set test_id
      * @param int $testId
-     * @return \Toogas\AbTesting\Statistic\Api\Data\StatisticInterface
+     * @return StatisticInterface
      */
     public function setTestId($testId);
 
@@ -93,7 +93,7 @@ interface StatisticInterface
     /**
      * Set content
      * @param int $content
-     * @return \Toogas\AbTesting\Statistic\Api\Data\StatisticInterface
+     * @return StatisticInterface
      */
     public function setContent($content);
 
@@ -106,7 +106,7 @@ interface StatisticInterface
     /**
      * Set action
      * @param string $action
-     * @return \Toogas\AbTesting\Statistic\Api\Data\StatisticInterface
+     * @return StatisticInterface
      */
     public function setAction($action);
 
@@ -119,7 +119,7 @@ interface StatisticInterface
     /**
      * Set sale_value
      * @param float $saleValue
-     * @return \Toogas\AbTesting\Statistic\Api\Data\StatisticInterface
+     * @return StatisticInterface
      */
     public function setSaleValue($saleValue);
 }

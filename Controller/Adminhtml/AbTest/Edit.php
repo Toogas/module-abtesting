@@ -16,6 +16,8 @@ declare(strict_types=1);
  */
 namespace Toogas\AbTesting\Controller\Adminhtml\AbTest;
 
+use Magento\Framework\View\Result\PageFactory;
+
 /**
  * @author   Toogas Team <comercial@toogas.com>
  * @license  http://opensource.org/licenses/osl-3.0.php Open Software License OSL3.0
@@ -24,6 +26,9 @@ namespace Toogas\AbTesting\Controller\Adminhtml\AbTest;
 class Edit extends \Toogas\AbTesting\Controller\Adminhtml\AbTest
 {
 
+    /**
+     * @var PageFactory
+     */
     protected $resultPageFactory;
 
     /**
