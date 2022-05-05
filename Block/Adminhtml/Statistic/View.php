@@ -361,6 +361,10 @@ class View extends Template
      */
     public function getClickAPercentage()
     {
+        if(!$this->getContentAClicks()) {
+            return 0;
+        }
+
         return (($this->getContentAClicks() * 100) / ($this->getContentAClicks() + $this->getContentBClicks()));
     }
 
@@ -369,6 +373,10 @@ class View extends Template
      */
     public function getClickBPercentage()
     {
+        if(!$this->getContentBClicks()) {
+            return 0;
+        }
+
         return (($this->getContentBClicks() * 100) / ($this->getContentAClicks() + $this->getContentBClicks()));
     }
 
@@ -377,6 +385,10 @@ class View extends Template
      */
     public function getUniqueAPercentage()
     {
+        if(!$this->getContentAUniqueViews()) {
+            return 0;
+        }
+
         return (
             ($this->getContentAUniqueViews() * 100)
             / ($this->getContentAUniqueViews() + $this->getContentBUniqueViews())
@@ -388,6 +400,10 @@ class View extends Template
      */
     public function getUniqueBPercentage()
     {
+        if(!$this->getContentBUniqueViews()) {
+            return 0;
+        }
+
         return (
             ($this->getContentBUniqueViews() * 100)
             / ($this->getContentAUniqueViews() + $this->getContentBUniqueViews())
@@ -399,6 +415,10 @@ class View extends Template
      */
     public function getViewAPercentage()
     {
+        if(!$this->getContentAViews()) {
+            return 0;
+        }
+
         return (($this->getContentAViews() * 100) / ($this->getContentAViews() + $this->getContentBViews()));
     }
 
@@ -407,6 +427,10 @@ class View extends Template
      */
     public function getViewBPercentage()
     {
+        if(!$this->getContentBViews()) {
+            return 0;
+        }
+
         return (($this->getContentBViews() * 100) / ($this->getContentAViews() + $this->getContentBViews()));
     }
 
@@ -415,6 +439,10 @@ class View extends Template
      */
     public function getRenderAPercentage()
     {
+        if(!$this->getContentARenderCount()) {
+            return 0;
+        }
+
         return (
             ($this->getContentARenderCount() * 100)
             / ($this->getContentARenderCount() + $this->getContentBRenderCount())
@@ -426,6 +454,10 @@ class View extends Template
      */
     public function getRenderBPercentage()
     {
+        if(!$this->getContentBRenderCount()) {
+            return 0;
+        }
+
         return (
             ($this->getContentBRenderCount() * 100)
             / ($this->getContentARenderCount() + $this->getContentBRenderCount())
