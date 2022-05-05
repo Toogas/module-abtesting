@@ -361,7 +361,7 @@ class View extends Template
      */
     public function getClickAPercentage()
     {
-        if(!$this->getContentAClicks()) {
+        if (!$this->getContentAClicks()) {
             return 0;
         }
 
@@ -373,7 +373,7 @@ class View extends Template
      */
     public function getClickBPercentage()
     {
-        if(!$this->getContentBClicks()) {
+        if (!$this->getContentBClicks()) {
             return 0;
         }
 
@@ -385,7 +385,7 @@ class View extends Template
      */
     public function getUniqueAPercentage()
     {
-        if(!$this->getContentAUniqueViews()) {
+        if (!$this->getContentAUniqueViews()) {
             return 0;
         }
 
@@ -400,7 +400,7 @@ class View extends Template
      */
     public function getUniqueBPercentage()
     {
-        if(!$this->getContentBUniqueViews()) {
+        if (!$this->getContentBUniqueViews()) {
             return 0;
         }
 
@@ -415,7 +415,7 @@ class View extends Template
      */
     public function getViewAPercentage()
     {
-        if(!$this->getContentAViews()) {
+        if (!$this->getContentAViews()) {
             return 0;
         }
 
@@ -427,7 +427,7 @@ class View extends Template
      */
     public function getViewBPercentage()
     {
-        if(!$this->getContentBViews()) {
+        if (!$this->getContentBViews()) {
             return 0;
         }
 
@@ -439,7 +439,7 @@ class View extends Template
      */
     public function getRenderAPercentage()
     {
-        if(!$this->getContentARenderCount()) {
+        if (!$this->getContentARenderCount()) {
             return 0;
         }
 
@@ -454,7 +454,7 @@ class View extends Template
      */
     public function getRenderBPercentage()
     {
-        if(!$this->getContentBRenderCount()) {
+        if (!$this->getContentBRenderCount()) {
             return 0;
         }
 
