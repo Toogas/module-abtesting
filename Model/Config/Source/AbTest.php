@@ -25,22 +25,16 @@ class AbTest implements OptionSourceInterface
 {
 
     /**
-     * SearchCriteria
-     *
      * @var SearchCriteriaBuilder
      */
     protected $searchCriteriaBuilder;
 
     /**
-     * AbTestRepository
-     *
      * @var AbTestRepositoryInterface
      */
     protected $abTestRepository;
 
     /**
-     * FilterBuilder
-     *
      * @var FilterBuilder
      */
     protected $filterBuilder;

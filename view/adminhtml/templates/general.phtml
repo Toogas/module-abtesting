@@ -63,6 +63,34 @@
     </div>
 </div>
 
+<div class="fieldset-wrapper" data-level="0" data-index="conversion">
+    <div class="fieldset-wrapper-title" tabindex="-1">
+        <strong class="title">
+            <span><?= /* @noEscape */ __('Conversion Rate by SKU') ?> %</span>
+        </strong>
+    </div>
+    <div class="admin__fieldset-wrapper-content">
+        <div class="admin__fieldset">
+            <form id="conversion-sku-form"
+                  action="<?= /** @noEscape */ $block->getUrl('toogas_abtesting/statistic/conversionbysku') ?>"
+                  method="post">
+                <input type="hidden"
+                       value="<?= $block->escapeHtmlAttr($block->getRequest()->getParam('entity_id')) ?>"
+                       name="teste-id"
+                       id="test-id" />
+                <label for="conversion-sku"><?= /* @noEscape */ __('SKU to check') ?>:</label>
+                <input class="admin__control-text" name="conversion-sku" id="conversion-sku"/>
+                <button type="submit"><?= /* @noEscape */ __('Check') ?></button>
+            </form>
+        </div>
+    </div>
+    <div class="admin__fieldset-wrapper-content">
+        <div class="admin__fieldset">
+            <div class="chart-ajax-container"></div>
+        </div>
+    </div>
+</div>
+
 <div class="fieldset-wrapper" data-level="0" data-index="average">
     <div class="fieldset-wrapper-title" tabindex="-1">
         <strong class="title">
@@ -475,5 +503,93 @@
             document.getElementById('render_percentage'),
             configRenderPercent
         );
+
+        let xhr, conversionSku, configConversionSku, dataConversionSku;
+        $('#conversion-sku-form').on('submit', function(e) {
+            e.preventDefault();
+            let form = $(this);
+
+            if(xhr) {
+                xhr.abort();
+            }
+            xhr = $.ajax({
+                url: form.attr('action'),
+                data: {
+                    form_key: window.FORM_KEY,
+                    sku: $('#conversion-sku').val(),
+                    test: $('#test-id').val()
+                },
+                type: 'POST',
+                showLoader: true,
+                success: function(result) {
+                    if (result) {
+                        form.parents('.fieldset-wrapper').find('.ajax-error').remove();
+                        if (result.error) {
+                            form.parents('.fieldset-wrapper').find('.chart-ajax-container').append(
+                                '<p class="ajax-error">' +
+                                    result.message +
+                                '</p>'
+                            );
+                        } else {
+                            if(!form.parents('.fieldset-wrapper').find('.chart-container').length) {
+                                form.parents('.fieldset-wrapper').find('.chart-ajax-container').append(
+                                    '<div class="chart-container">' +
+                                    '<canvas id="conversion-sku-chart"></canvas>' +
+                                    '</div>'
+                                );
+                            }
+
+                            dataConversionSku = {
+                                labels: labels,
+                                datasets: [
+                                    {
+                                        label: "<?= /* @noEscape */ __('Conversion Rate by SKU') ?> %",
+                                        data: [
+                                            result.a,
+                                            result.b
+                                        ],
+                                        backgroundColor: [
+                                            'rgb(54, 162, 235)',
+                                            'rgb(255, 99, 132)'
+                                        ],
+                                        borderColor: [
+                                            'rgb(0,13,252)',
+                                            'rgb(255,0,0)'
+                                        ],
+                                        borderWidth: 1
+                                    }
+                                ]
+                            };
+
+                            configConversionSku = {
+                                type: 'bar',
+                                data: dataConversionSku,
+                                options: {
+                                    responsive: true,
+                                    maintainAspectRatio: false,
+                                    scales: {
+                                        y: {
+                                            beginAtZero: true
+                                        }
+                                    },
+                                    plugins: {
+                                        legend: false,
+                                    },
+                                }
+                            };
+
+                            if(conversionSku) {
+                                conversionSku.destroy();
+                            }
+
+                            conversionSku = new Chart(
+                                document.getElementById('conversion-sku-chart'),
+                                configConversionSku
+                            );
+                        }
+                    }
+                }
+            });
+        });
     });
 </script>

@@ -24,6 +24,9 @@ namespace Toogas\AbTesting\Controller\Adminhtml\AbTest;
 class NewAction extends \Toogas\AbTesting\Controller\Adminhtml\AbTest
 {
 
+    /**
+     * @var \Magento\Backend\Model\View\Result\ForwardFactory
+     */
     protected $resultForwardFactory;
 
     /**

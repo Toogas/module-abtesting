@@ -28,6 +28,7 @@ interface AbTestRepositoryInterface
 
     /**
      * Save AbTest
+     *
      * @param \Toogas\AbTesting\Api\Data\AbTestInterface $abTest
      * @return \Toogas\AbTesting\Api\Data\AbTestInterface
      * @throws \Magento\Framework\Exception\LocalizedException
@@ -38,6 +39,7 @@ interface AbTestRepositoryInterface
 
     /**
      * Retrieve AbTest
+     *
      * @param string $entityId
      * @return \Toogas\AbTesting\Api\Data\AbTestInterface
      * @throws \Magento\Framework\Exception\LocalizedException
@@ -46,6 +48,7 @@ interface AbTestRepositoryInterface
 
     /**
      * Retrieve AbTest matching the specified criteria.
+     *
      * @param \Magento\Framework\Api\SearchCriteriaInterface $searchCriteria
      * @return \Toogas\AbTesting\Api\Data\AbTestSearchResultsInterface
      * @throws \Magento\Framework\Exception\LocalizedException
@@ -56,6 +59,7 @@ interface AbTestRepositoryInterface
 
     /**
      * Delete AbTest
+     *
      * @param \Toogas\AbTesting\Api\Data\AbTestInterface $abTest
      * @return bool true on success
      * @throws \Magento\Framework\Exception\LocalizedException
@@ -66,6 +70,7 @@ interface AbTestRepositoryInterface
 
     /**
      * Delete AbTest by ID
+     *
      * @param string $entityId
      * @return bool true on success
      * @throws \Magento\Framework\Exception\NoSuchEntityException

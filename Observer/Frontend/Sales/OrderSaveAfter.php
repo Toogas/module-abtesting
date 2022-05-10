@@ -29,7 +29,7 @@ use Toogas\AbTesting\Model\ResourceModel\Statistic\CollectionFactory as Statisti
  * @license  http://opensource.org/licenses/osl-3.0.php Open Software License OSL3.0
  * @link     http://toogas.com
  */
-class OrderPlaceAfter implements ObserverInterface
+class OrderSaveAfter implements ObserverInterface
 {
 
     /**
@@ -52,6 +52,9 @@ class OrderPlaceAfter implements ObserverInterface
      */
     protected $statisticCollection;
 
+    /**
+     * @var CheckoutSession
+     */
     protected $checkoutSession;
 
     /**
@@ -61,6 +64,7 @@ class OrderPlaceAfter implements ObserverInterface
      * @param StatisticInterfaceFactory $statisticFactory
      * @param Session $session
      * @param StatisticCollection $statisticCollection
+     * @param CheckoutSession $checkoutSession
      */
     public function __construct(
         StatisticRepositoryInterface $statisticRepository,
@@ -88,21 +92,35 @@ class OrderPlaceAfter implements ObserverInterface
     ) {
         //Check if user has already seen any content and if soo add statistic of checkout
         $order = $observer->getOrder();
+
+        if (!$order->getId()) {
+            return;
+        }
+
         $sessionId = $this->session->getSessionId();
         $existingViews = $this->statisticCollection->create()
             ->addFieldToFilter('action', 'view')
             ->addFieldToFilter('session_id', $sessionId);
         $existingViews->getSelect()->group('test_id');
+
         if ($existingViews->getSize() > 0) {
             foreach ($existingViews->getItems() as $view) {
-                $stat = $this->statisticFactory->create();
-                $stat->setSessionId($sessionId);
-                $stat->setEmail($order->getCustomerEmail());
-                $stat->setTestId($view->getTestId());
-                $stat->setContent($view->getContent());
-                $stat->setAction('checkout');
-                $stat->setSaleValue($order->getGrandTotal());
-                $this->statisticRepository->save($stat);
+                $checkExists = $this->statisticCollection->create()
+                    ->addFieldToFilter('action', 'checkout')
+                    ->addFieldToFilter('test_id', $view->getTestId())
+                    ->addFieldToFilter('order_id', $order->getId())
+                    ->addFieldToFilter('session_id', $sessionId);
+                if (!$checkExists->getSize()) {
+                    $stat = $this->statisticFactory->create();
+                    $stat->setSessionId($sessionId);
+                    $stat->setEmail($order->getCustomerEmail());
+                    $stat->setTestId($view->getTestId());
+                    $stat->setContent($view->getContent());
+                    $stat->setAction('checkout');
+                    $stat->setSaleValue($order->getGrandTotal());
+                    $stat->setOrderId($order->getId());
+                    $this->statisticRepository->save($stat);
+                }
             }
         }
     }

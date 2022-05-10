@@ -26,12 +26,14 @@ interface StatisticSearchResultsInterface extends \Magento\Framework\Api\SearchR
 
     /**
      * Get Statistic list.
+     *
      * @return \Toogas\AbTesting\Api\Data\StatisticInterface[]
      */
     public function getItems();
 
     /**
      * Set session_id list.
+     *
      * @param \Toogas\AbTesting\Api\Data\StatisticInterface[] $items
      * @return $this
      */

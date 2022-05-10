@@ -146,4 +146,20 @@ class Statistic extends AbstractModel implements StatisticInterface
     {
         return $this->setData(self::SALE_VALUE, $saleValue);
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function getOrderId()
+    {
+        return $this->getData(self::ORDER_ID);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function setOrderId($orderId)
+    {
+        return $this->setData(self::ORDER_ID, $orderId);
+    }
 }

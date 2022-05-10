@@ -27,7 +27,7 @@ class Collection extends AbstractCollection
 {
 
     /**
-     * @inheritDoc
+     * @var string $_idFieldName
      */
     protected $_idFieldName = 'entity_id';
 

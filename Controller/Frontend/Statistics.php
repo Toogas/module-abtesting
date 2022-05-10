@@ -49,6 +49,12 @@ class Statistics extends Action implements HttpGetActionInterface
      */
     protected $session;
 
+    /**
+     * @param Context $context
+     * @param StatisticRepositoryInterface $statisticRepository
+     * @param StatisticInterfaceFactory $statisticFactory
+     * @param Session $session
+     */
     public function __construct(
         Context $context,
         StatisticRepositoryInterface $statisticRepository,
@@ -62,7 +68,8 @@ class Statistics extends Action implements HttpGetActionInterface
     }
 
     /**
-     * execute
+     * Execute
+     *
      * @return Json
      */
     public function execute()
@@ -103,11 +110,11 @@ class Statistics extends Action implements HttpGetActionInterface
     /**
      * Count views per content
      *
-     * @param $id
-     * @param $block
+     * @param string $id
+     * @param string $block
      * @throws LocalizedException
      */
-    protected function _countView($id, $block)
+    protected function _countView(string $id, string $block)
     {
         $stat = $this->statisticFactory->create();
         $stat->setSessionId($this->session->getSessionId());
@@ -121,11 +128,11 @@ class Statistics extends Action implements HttpGetActionInterface
     /**
      * Count clicks per content
      *
-     * @param $id
-     * @param $block
+     * @param string $id
+     * @param string $block
      * @throws LocalizedException
      */
-    protected function _countClick($id, $block)
+    protected function _countClick(string $id, string $block)
     {
         $stat = $this->statisticFactory->create();
         $stat->setSessionId($this->session->getSessionId());

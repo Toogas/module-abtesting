@@ -37,8 +37,9 @@ class DataProvider extends AbstractDataProvider
      * @var array
      */
     protected $loadedData;
+
     /**
-     * @inheritDoc
+     * @var CollectionFactory
      */
     protected $collection;
 

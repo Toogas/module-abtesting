@@ -24,8 +24,12 @@ namespace Toogas\AbTesting\Controller\Adminhtml;
 abstract class Statistic extends \Magento\Backend\App\Action
 {
 
+    /**
+     * @var \Magento\Framework\Registry
+     */
     protected $_coreRegistry;
-    const ADMIN_RESOURCE = 'Magento_Backend::marketing';
+
+    public const ADMIN_RESOURCE = 'Magento_Backend::marketing';
 
     /**
      * @param \Magento\Backend\App\Action\Context $context

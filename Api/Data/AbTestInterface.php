@@ -24,24 +24,26 @@ namespace Toogas\AbTesting\Api\Data;
 interface AbTestInterface
 {
 
-    const BLOCK_2 = 'block_2';
-    const ENTITY_ID = 'entity_id';
-    const BLOCK_1 = 'block_1';
-    const ACTIVE = 'active';
-    const TITLE = 'title';
-    const BLOCK_1_RENDER_COUNT = 'block_1_render_count';
-    const BLOCK_2_RENDER_COUNT = 'block_2_render_count';
-    const START_DATE = 'start_date';
-    const END_DATE = 'end_date';
+    public const BLOCK_2 = 'block_2';
+    public const ENTITY_ID = 'entity_id';
+    public const BLOCK_1 = 'block_1';
+    public const ACTIVE = 'active';
+    public const TITLE = 'title';
+    public const BLOCK_1_RENDER_COUNT = 'block_1_render_count';
+    public const BLOCK_2_RENDER_COUNT = 'block_2_render_count';
+    public const START_DATE = 'start_date';
+    public const END_DATE = 'end_date';
 
     /**
      * Get entity_id
+     *
      * @return string|null
      */
     public function getEntityId();
 
     /**
      * Set entity_id
+     *
      * @param string $entityId
      * @return AbTestInterface
      */
@@ -49,12 +51,14 @@ interface AbTestInterface
 
     /**
      * Get active
+     *
      * @return bool|null
      */
     public function getActive();
 
     /**
      * Set active
+     *
      * @param bool $active
      * @return AbTestInterface
      */
@@ -62,12 +66,14 @@ interface AbTestInterface
 
     /**
      * Get title
+     *
      * @return string|null
      */
     public function getTitle();
 
     /**
      * Set title
+     *
      * @param string $title
      * @return AbTestInterface
      */
@@ -75,12 +81,14 @@ interface AbTestInterface
 
     /**
      * Get block_1
+     *
      * @return string|null
      */
     public function getBlock1();
 
     /**
      * Set block_1
+     *
      * @param string $block1
      * @return AbTestInterface
      */
@@ -88,12 +96,14 @@ interface AbTestInterface
 
     /**
      * Get block_2
+     *
      * @return string|null
      */
     public function getBlock2();
 
     /**
      * Set block_2
+     *
      * @param string $block2
      * @return AbTestInterface
      */
@@ -101,12 +111,14 @@ interface AbTestInterface
 
     /**
      * Get block_1_render_count
+     *
      * @return string|null
      */
     public function getBlock1RenderCount();
 
     /**
      * Set block_1_render_count
+     *
      * @param string $count
      * @return AbTestInterface
      */
@@ -114,12 +126,14 @@ interface AbTestInterface
 
     /**
      * Get block_2_render_count
+     *
      * @return string|null
      */
     public function getBlock2RenderCount();
 
     /**
      * Set block_2_render_count
+     *
      * @param string $count
      * @return AbTestInterface
      */
@@ -127,12 +141,14 @@ interface AbTestInterface
 
     /**
      * Get start_date
+     *
      * @return string|null
      */
     public function getStartDate();
 
     /**
      * Set start_date
+     *
      * @param string $date
      * @return AbTestInterface
      */
@@ -140,12 +156,14 @@ interface AbTestInterface
 
     /**
      * Get end_date
+     *
      * @return string|null
      */
     public function getEndDate();
 
     /**
      * Set end_date
+     *
      * @param string $date
      * @return AbTestInterface
      */

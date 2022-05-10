@@ -31,6 +31,9 @@ use Toogas\AbTesting\Model\AbTestRepository;
 class AbTest extends Template implements BlockInterface
 {
 
+    /**
+     * @var string
+     */
     protected $_template = "widget/abtest.phtml";
 
     /**

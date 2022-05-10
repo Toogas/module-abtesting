@@ -26,6 +26,9 @@ use Magento\Framework\Exception\LocalizedException;
 class Save extends \Magento\Backend\App\Action
 {
 
+    /**
+     * @var \Magento\Framework\App\Request\DataPersistorInterface
+     */
     protected $dataPersistor;
 
     /**

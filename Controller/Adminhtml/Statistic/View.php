@@ -24,6 +24,9 @@ namespace Toogas\AbTesting\Controller\Adminhtml\Statistic;
 class View extends \Toogas\AbTesting\Controller\Adminhtml\Statistic
 {
 
+    /**
+     * @var \Magento\Framework\View\Result\PageFactory
+     */
     protected $resultPageFactory;
 
     /**

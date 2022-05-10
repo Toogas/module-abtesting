@@ -28,6 +28,7 @@ interface StatisticRepositoryInterface
 
     /**
      * Save Statistic
+     *
      * @param \Toogas\AbTesting\Api\Data\StatisticInterface $statistic
      * @return \Toogas\AbTesting\Api\Data\StatisticInterface
      * @throws \Magento\Framework\Exception\LocalizedException
@@ -38,6 +39,7 @@ interface StatisticRepositoryInterface
 
     /**
      * Retrieve Statistic
+     *
      * @param string $entityId
      * @return \Toogas\AbTesting\Api\Data\StatisticInterface
      * @throws \Magento\Framework\Exception\LocalizedException
@@ -46,6 +48,7 @@ interface StatisticRepositoryInterface
 
     /**
      * Retrieve Statistic matching the specified criteria.
+     *
      * @param \Magento\Framework\Api\SearchCriteriaInterface $searchCriteria
      * @return \Toogas\AbTesting\Api\Data\StatisticSearchResultsInterface
      * @throws \Magento\Framework\Exception\LocalizedException
@@ -56,6 +59,7 @@ interface StatisticRepositoryInterface
 
     /**
      * Delete Statistic
+     *
      * @param \Toogas\AbTesting\Api\Data\StatisticInterface $statistic
      * @return bool true on success
      * @throws \Magento\Framework\Exception\LocalizedException
@@ -66,6 +70,7 @@ interface StatisticRepositoryInterface
 
     /**
      * Delete Statistic by ID
+     *
      * @param string $entityId
      * @return bool true on success
      * @throws \Magento\Framework\Exception\NoSuchEntityException

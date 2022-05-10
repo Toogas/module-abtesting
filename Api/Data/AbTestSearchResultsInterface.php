@@ -26,12 +26,14 @@ interface AbTestSearchResultsInterface extends \Magento\Framework\Api\SearchResu
 
     /**
      * Get AbTest list.
+     *
      * @return \Toogas\AbTesting\Api\Data\AbTestInterface[]
      */
     public function getItems();
 
     /**
      * Set block_1 list.
+     *
      * @param \Toogas\AbTesting\Api\Data\AbTestInterface[] $items
      * @return $this
      */

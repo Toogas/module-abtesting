@@ -61,6 +61,14 @@ class Content extends Action implements HttpGetActionInterface
      */
     protected $statisticCollection;
 
+    /**
+     * @param Context $context
+     * @param AbTestRepositoryInterface $abTestRepository
+     * @param FilterProvider $filterProvider
+     * @param StoreManagerInterface $storeManager
+     * @param Session $session
+     * @param StatisticCollection $statisticCollection
+     */
     public function __construct(
         Context $context,
         AbTestRepositoryInterface $abTestRepository,
@@ -78,7 +86,8 @@ class Content extends Action implements HttpGetActionInterface
     }
 
     /**
-     * execute
+     * Execute
+     *
      * @return Json
      */
     public function execute()

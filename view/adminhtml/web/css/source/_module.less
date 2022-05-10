@@ -7,16 +7,18 @@
     @font-style: normal
 );
 
-.admin__menu {
-    .item-marketing {
-        [data-ui-id="menu-toogas-abtesting-management"] {
-            .submenu-group-title {
-                &:before {
-                    font-family: @toogas-icons-icons-admin__font-name;
-                    content: ".";
-                    font-size: 23px;
-                    padding-right: @indent__s;
-                    vertical-align: middle;
+.admin {
+    &__menu {
+        .item-marketing {
+            [data-ui-id='menu-toogas-abtesting-management'] {
+                .submenu-group-title {
+                    &:before {
+                        content: '.';
+                        font-family: @toogas-icons-icons-admin__font-name;
+                        font-size: 23px;
+                        padding-right: @indent__s;
+                        vertical-align: middle;
+                    }
                 }
             }
         }
@@ -25,14 +27,14 @@
 
 .fieldset-wrapper {
     .chart-container {
-        position: relative;
         height: 400px;
+        position: relative;
     }
 
     .top-chart-container {
         .lib-vendor-prefix-display(grid);
         grid-template-columns: 25% 25% 25% 25%;
-        margin-bottom: @indent__base!important;//override admin fieldset style
+        margin-bottom: @indent__base !important; // override admin fieldset style
 
         .chart-container {
             text-align: center;

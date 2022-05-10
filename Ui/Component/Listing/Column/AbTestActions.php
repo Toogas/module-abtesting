@@ -24,10 +24,14 @@ namespace Toogas\AbTesting\Ui\Component\Listing\Column;
 class AbTestActions extends \Magento\Ui\Component\Listing\Columns\Column
 {
 
+    /**
+     * @var \Magento\Framework\UrlInterface
+     */
     protected $urlBuilder;
-    const URL_PATH_EDIT = 'toogas_abtesting/abtest/edit';
-    const URL_PATH_DELETE = 'toogas_abtesting/abtest/delete';
-    const URL_PATH_DETAILS = 'toogas_abtesting/abtest/details';
+
+    public const URL_PATH_EDIT = 'toogas_abtesting/abtest/edit';
+    public const URL_PATH_DELETE = 'toogas_abtesting/abtest/delete';
+    public const URL_PATH_DETAILS = 'toogas_abtesting/abtest/details';
 
     /**
      * @param \Magento\Framework\View\Element\UiComponent\ContextInterface $context

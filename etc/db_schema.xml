@@ -27,6 +27,7 @@
         <column name="content" nullable="true" xsi:type="smallint" comment="content A or B"/>
         <column name="action" nullable="true" xsi:type="varchar" length="50" comment="Action type"/>
         <column name="sale_value" xsi:type="decimal" scale="4" precision="20" nullable="true" comment="Checkout action total"/>
+        <column name="order_id" xsi:type="int" unsigned="true" nullable="false" identity="false" default="0" comment="Order ID"/>
         <column name="created_at" xsi:type="timestamp" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Creation Time"/>
         <index referenceId="IDX_TOOGAS_STATISIC_TEST_CONTENT_ACTION" indexType="btree">
             <column name="test_id"/>

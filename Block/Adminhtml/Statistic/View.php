@@ -61,6 +61,8 @@ class View extends Template
     }
 
     /**
+     * Get content A render count
+     *
      * @return int
      */
     public function getContentARenderCount()
@@ -73,6 +75,8 @@ class View extends Template
     }
 
     /**
+     * Get content A number of views
+     *
      * @return int
      */
     public function getContentAViews()
@@ -86,6 +90,8 @@ class View extends Template
     }
 
     /**
+     * Get content A number of unique views
+     *
      * @return int
      */
     public function getContentAUniqueViews()
@@ -100,6 +106,8 @@ class View extends Template
     }
 
     /**
+     * Get content B number of unique views
+     *
      * @return int
      */
     public function getContentBUniqueViews()
@@ -114,6 +122,8 @@ class View extends Template
     }
 
     /**
+     * Get content B render count
+     *
      * @return int
      */
     public function getContentBRenderCount()
@@ -126,6 +136,8 @@ class View extends Template
     }
 
     /**
+     * Get content B number of views
+     *
      * @return int
      */
     public function getContentBViews()
@@ -139,6 +151,8 @@ class View extends Template
     }
 
     /**
+     * Get content A click count
+     *
      * @return int
      */
     public function getContentAClicks()
@@ -152,6 +166,8 @@ class View extends Template
     }
 
     /**
+     * Get content B click count
+     *
      * @return int
      */
     public function getContentBClicks()
@@ -165,6 +181,8 @@ class View extends Template
     }
 
     /**
+     * Get content A Overall Score
+     *
      * @return int
      */
     public function getContentAOverall()
@@ -176,6 +194,8 @@ class View extends Template
     }
 
     /**
+     * Get content B Overall Score
+     *
      * @return int
      */
     public function getContentBOverall()
@@ -187,6 +207,8 @@ class View extends Template
     }
 
     /**
+     * Get both contents daily view count
+     *
      * @return array
      */
     protected function _getDailyViews()
@@ -213,6 +235,8 @@ class View extends Template
     }
 
     /**
+     * Get content A daily view count
+     *
      * @return array
      */
     public function getContentADaily()
@@ -226,6 +250,8 @@ class View extends Template
     }
 
     /**
+     * Get content B daily view count
+     *
      * @return array
      */
     public function getContentBDaily()
@@ -239,6 +265,8 @@ class View extends Template
     }
 
     /**
+     * Get daily labels for graph
+     *
      * @return string
      */
     public function getDailyLabels()
@@ -253,6 +281,8 @@ class View extends Template
     }
 
     /**
+     * Get content A unique checkouts
+     *
      * @return int
      */
     protected function _getContentAUniqueCheckouts()
@@ -267,6 +297,8 @@ class View extends Template
     }
 
     /**
+     * Get content B unique checkouts
+     *
      * @return int
      */
     protected function _getContentBUniqueCheckouts()
@@ -281,6 +313,8 @@ class View extends Template
     }
 
     /**
+     * Get content A conversion rate
+     *
      * @return int
      */
     public function getConversionRateA()
@@ -296,6 +330,8 @@ class View extends Template
     }
 
     /**
+     * Get content B conversion rate
+     *
      * @return int
      */
     public function getConversionRateB()
@@ -311,6 +347,8 @@ class View extends Template
     }
 
     /**
+     * Get content A average sales
+     *
      * @return int
      */
     public function getAverageSaleA()
@@ -334,6 +372,8 @@ class View extends Template
     }
 
     /**
+     * Get content B average sales
+     *
      * @return int
      */
     public function getAverageSaleB()
@@ -357,6 +397,8 @@ class View extends Template
     }
 
     /**
+     * Get content A click percentage
+     *
      * @return int
      */
     public function getClickAPercentage()
@@ -369,6 +411,8 @@ class View extends Template
     }
 
     /**
+     * Get content B click percentage
+     *
      * @return int
      */
     public function getClickBPercentage()
@@ -381,6 +425,8 @@ class View extends Template
     }
 
     /**
+     * Get content A unique views percentage
+     *
      * @return int
      */
     public function getUniqueAPercentage()
@@ -396,6 +442,8 @@ class View extends Template
     }
 
     /**
+     * Get content B unique views percentage
+     *
      * @return int
      */
     public function getUniqueBPercentage()
@@ -411,6 +459,8 @@ class View extends Template
     }
 
     /**
+     * Get content A views percentage
+     *
      * @return int
      */
     public function getViewAPercentage()
@@ -423,6 +473,8 @@ class View extends Template
     }
 
     /**
+     * Get content B views percentage
+     *
      * @return int
      */
     public function getViewBPercentage()
@@ -435,6 +487,8 @@ class View extends Template
     }
 
     /**
+     * Get content A render count percentage
+     *
      * @return int
      */
     public function getRenderAPercentage()
@@ -450,6 +504,8 @@ class View extends Template
     }
 
     /**
+     * Get content B render count percentage
+     *
      * @return int
      */
     public function getRenderBPercentage()

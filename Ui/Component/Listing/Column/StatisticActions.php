@@ -24,8 +24,12 @@ namespace Toogas\AbTesting\Ui\Component\Listing\Column;
 class StatisticActions extends \Magento\Ui\Component\Listing\Columns\Column
 {
 
+    /**
+     * @var \Magento\Framework\UrlInterface
+     */
     protected $urlBuilder;
-    const URL_PATH_VIEW = 'toogas_abtesting/statistic/view';
+
+    public const URL_PATH_VIEW = 'toogas_abtesting/statistic/view';
 
     /**
      * @param \Magento\Framework\View\Element\UiComponent\ContextInterface $context
